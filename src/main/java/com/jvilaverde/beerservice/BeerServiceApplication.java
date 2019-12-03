@@ -1,4 +1,4 @@
-package com.jvilaverde.demo;
+package com.jvilaverde.beerservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
