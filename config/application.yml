@@ -1,4 +1,16 @@
 #springfox.documentation.swagger.v2.host:
 
 server:
-  port: ${PORT:8081}
+  port: ${PORT:8080}
+
+logging:
+  level:
+    com.jvilaverde.beers: debug
+
+spring:
+  datasource:
+    initialization-mode: EMBEDDED
+
+sfg:
+  brewery:
+    beer-inventory-service-host: http://localhost:8082
