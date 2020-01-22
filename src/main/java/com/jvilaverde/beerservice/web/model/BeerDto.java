@@ -1,4 +1,4 @@
-package com.jvilaverde.beerservice.model;
+package com.jvilaverde.beerservice.web.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;

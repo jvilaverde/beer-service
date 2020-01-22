@@ -1,10 +1,9 @@
 package com.jvilaverde.beerservice;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.jvilaverde.beerservice.bootstrap.BeerLoader;
-import com.jvilaverde.beerservice.controller.BeerController;
-import com.jvilaverde.beerservice.model.BeerDto;
-import com.jvilaverde.beerservice.model.BeerStyle;
+import com.jvilaverde.beerservice.web.controller.BeerController;
+import com.jvilaverde.beerservice.web.model.BeerDto;
+import com.jvilaverde.beerservice.web.model.BeerStyle;
 import com.jvilaverde.beerservice.services.BeerService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -72,7 +71,6 @@ class BeerControllerTest {
                 .beerName("My Beer")
                 .beerStyle(BeerStyle.ALE)
                 .price(new BigDecimal("2.99"))
-                .upc(BeerLoader.BEER_1_UPC)
                 .build();
     }
 }

@@ -1,4 +1,4 @@
-package com.jvilaverde.beerservice.controller;
+package com.jvilaverde.beerservice.web.exceptions;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
