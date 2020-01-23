@@ -10,7 +10,7 @@
     </parent>
 
     <groupId>com.jvilaverde</groupId>
-    <artifactId>demo</artifactId>
+    <artifactId>beer-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>Beer Service</name>
     <description>Beer Service</description>

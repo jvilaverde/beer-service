@@ -42,11 +42,10 @@ public class BeerInventoryServiceRestTemplateImpl implements BeerInventoryServic
                         new ParameterizedTypeReference<List<BeerInventoryDto>>(){}, (Object) beerId);
 
         //sum from inventory list
-        Integer onHand = Objects.requireNonNull(responseEntity.getBody())
+
+        return Objects.requireNonNull(responseEntity.getBody())
                 .stream()
                 .mapToInt(BeerInventoryDto::getQuantityOnHand)
                 .sum();
-
-        return onHand;
     }
 }
