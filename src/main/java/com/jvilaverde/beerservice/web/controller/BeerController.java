@@ -28,9 +28,9 @@ public class BeerController {
                                                    @RequestParam(value = "pageSize", required = false) Integer pageSize,
                                                    @RequestParam(value = "beerName", required = false) String beerName,
                                                    @RequestParam(value = "beerStyle", required = false) BeerStyle beerStyle,
-                                                   @RequestParam(value = "showQuantityOnHand", required = false) Boolean showQuantityOnHand) {
-        if(showQuantityOnHand == null) {
-            showQuantityOnHand = false;
+                                                   @RequestParam(value = "showQuantityOnHand", required = false) Boolean showInventoryOnHand) {
+        if(showInventoryOnHand == null) {
+            showInventoryOnHand = false;
         }
 
         if (pageNumber == null || pageNumber < 0) {
@@ -41,7 +41,7 @@ public class BeerController {
             pageSize = DEFAULT_PAGE_SIZE;
         }
 
-        BeerPagedList beerList = beerService.listBeers(beerName, beerStyle, PageRequest.of(pageNumber, pageSize), showQuantityOnHand);
+        BeerPagedList beerList = beerService.listBeers(beerName, beerStyle, PageRequest.of(pageNumber, pageSize), showInventoryOnHand);
 
         return new ResponseEntity<>(beerList, HttpStatus.OK);
     }

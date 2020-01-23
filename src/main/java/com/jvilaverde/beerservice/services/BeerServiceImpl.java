@@ -8,6 +8,7 @@ import com.jvilaverde.beerservice.web.model.BeerPagedList;
 import com.jvilaverde.beerservice.web.model.BeerStyle;
 import com.jvilaverde.beerservice.repositories.BeerRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -23,11 +24,12 @@ public class BeerServiceImpl implements BeerService {
     private final BeerRepository beerRepository;
     private final BeerMapper beerMapper;
 
+    @Cacheable(cacheNames = "beerListCache", condition = "#showInventoryOnHand == false ")
     @Override
     public BeerPagedList listBeers(String beerName,
                                    BeerStyle beerStyle,
                                    PageRequest pageRequest,
-                                   Boolean showQuantityOnHand) {
+                                   Boolean showInventoryOnHand) {
         BeerPagedList beerPagedList;
         Page<Beer> beerPage;
 
@@ -44,7 +46,7 @@ public class BeerServiceImpl implements BeerService {
             beerPage = beerRepository.findAll(pageRequest);
         }
 
-        if (showQuantityOnHand) {
+        if (showInventoryOnHand) {
             beerPagedList = new BeerPagedList(beerPage
                     .getContent()
                     .stream()
@@ -68,9 +70,10 @@ public class BeerServiceImpl implements BeerService {
         return beerPagedList;
     }
 
+    @Cacheable(cacheNames = "beerCache", key = "#beerId", condition = "#showInventoryOnHand == false ")
     @Override
-    public BeerDto getById(UUID beerId, Boolean showQuantityOnHand) {
-        if (showQuantityOnHand) {
+    public BeerDto getById(UUID beerId, Boolean showInventoryOnHand) {
+        if (showInventoryOnHand) {
             return beerMapper.beerToBeerDtoWithInventory(
                     beerRepository.findById(beerId).orElseThrow(NotFoundException::new)
             );
