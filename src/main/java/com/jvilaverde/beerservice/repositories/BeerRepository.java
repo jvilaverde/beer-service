@@ -4,13 +4,14 @@ import com.jvilaverde.beerservice.domain.Beer;
 import com.jvilaverde.beerservice.web.model.BeerStyle;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.UUID;
 
 @Repository
-public interface BeerRepository extends PagingAndSortingRepository<Beer, UUID> {
+public interface BeerRepository extends JpaRepository<Beer, UUID> {
     Page<Beer> findAllByBeerName(String beerName, Pageable pageable);
 
     Page<Beer> findAllByBeerStyle(BeerStyle beerStyle, Pageable pageable);

@@ -13,6 +13,9 @@ spring:
   cache:
     jcache:
       config: classpath:ehcache.xml
+  artemis: # defaults for this docker image - vromero/activemq-artemis
+    user: artemis
+    password: simetraehcapa
 
 sfg:
   brewery:
