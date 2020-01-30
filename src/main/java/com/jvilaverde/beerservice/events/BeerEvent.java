@@ -10,7 +10,6 @@ import java.io.Serializable;
 
 @Data
 @RequiredArgsConstructor
-@AllArgsConstructor
 @Builder
 public class BeerEvent implements Serializable {
 
